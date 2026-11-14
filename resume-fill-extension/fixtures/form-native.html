@@ -1,0 +1,58 @@
+<!doctype html><html lang="zh-CN"><meta charset="utf-8"><title>演示简历表单</title>
+<h1>简历编辑</h1>
+<form id="resume">
+  <fieldset><legend>基本信息</legend>
+    <label>姓名<input id="person"></label>
+    <label>如何联系<input id="custom" type="tel"></label>
+    <label>邮箱<input id="email" type="email"></label>
+    <label>现居城市<select id="city"><option value="">请选择</option><option value="demo">示例城</option></select></label>
+    <label>身份证号码<input id="secret"></label>
+    <div><label>紧急联系人电话<input id="emergency" type="tel" autocomplete="tel"></label></div>
+  </fieldset>
+  <fieldset><legend>教育经历</legend>
+    <label>学校<input id="school"></label><label>开始时间<input id="edu-start" type="month"></label>
+    <label>毕业日期<input id="edu-end" type="date"></label><label>专业<input id="edu-major"></label>
+  </fieldset>
+  <section id="internships"><h2>实习经历</h2></section>
+  <button type="submit">保存</button>
+</form>
+<section aria-label="紧急联系人"><form><fieldset><legend>基本信息</legend><label>姓名<input id="nested-emergency"></label></fieldset></form></section>
+<script>
+  const params = new URLSearchParams(location.search);
+  const n = Number(params.get('n') ?? 4);
+  const group = document.querySelector('#internships');
+  function create(i, hidden = false) {
+    const row = document.createElement('fieldset');
+    row.hidden = hidden;
+    row.innerHTML = `<legend>实习经历 ${i + 1}</legend>
+      <label>公司名称<input id="co${i}"></label><label>职位<input id="title${i}"></label>
+      <label>开始时间<input id="start${i}" type="month"></label><label>结束时间<input id="end${i}" type="month"></label>
+      <label>实习描述<textarea id="desc${i}"></textarea></label>`;
+    group.append(row);
+    return row;
+  }
+  for (let i = 0; i < n; i++) create(i);
+  if (params.has('ambiguous')) {
+    document.querySelector('#co0').closest('fieldset').innerHTML = `<legend>实习经历 1</legend>
+      <div><h3>第一段</h3><label>公司名称<input id="split-company"></label><label>职位<input id="split-title"></label></div>
+      <div><h3>第二段</h3><label>参与单位<input id="split-other"></label><label>实习描述<textarea id="split-desc"></textarea></label></div>`;
+  }
+  create(99, true);
+  if (params.has('prefill')) {
+    document.querySelector('#co0').value = '示例丁公司';
+    document.querySelector('#co2').value = '不在资料中的公司';
+  }
+  if (params.has('limited')) document.querySelector('#desc0').maxLength = 2;
+  if (params.has('date-conflict')) {
+    document.querySelector('#school').value = '示例大学';
+    document.querySelector('#edu-end').value = '2026-06-18';
+  }
+  if (params.has('clear')) document.querySelector('#desc0').addEventListener('change', e => { e.target.value = ''; });
+  if (params.has('autosave')) document.querySelector('#resume').dataset.autosave = 'true';
+  if (params.has('rerender')) document.querySelector('#co0').addEventListener('change', () => {
+    const other = document.querySelector('#co1').closest('fieldset');
+    other.replaceWith(other.cloneNode(true));
+  });
+  window.submits = 0;
+  document.querySelector('#resume').addEventListener('submit', e => { window.submits++; e.preventDefault(); });
+</script></html>

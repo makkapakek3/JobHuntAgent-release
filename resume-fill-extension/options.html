@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="zh-CN">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>简历资料卡</title><link rel="stylesheet" href="ui.css">
+<main class="settings">
+  <h1>简历资料卡</h1>
+  <p>从本机选择 JSON 资料卡。确认后保存在当前浏览器，不会同步到云端。</p>
+  <section><h2>当前资料</h2><div id="stored">正在读取…</div></section>
+  <section><h2>导入或更换</h2>
+    <label for="profile-file">选择资料卡（JSON）</label>
+    <input id="profile-file" type="file" accept=".json,application/json">
+    <div id="candidate"></div>
+    <button id="save" type="button" disabled>确认保存资料卡</button>
+    <p id="status" role="status"></p>
+  </section>
+  <section><h2>清除资料</h2><button id="clear" class="secondary" type="button">清除本机资料和字段映射</button>
+    <div id="clear-panel" hidden><p>扩展内的资料卡和已记住的字段将被清除。原始文件保留。</p>
+      <button id="confirm-clear" type="button">确认清除</button> <button id="cancel-clear" class="secondary" type="button">取消</button></div>
+  </section>
+</main>
+<script src="profile.js"></script><script src="options.js"></script>
+</html>

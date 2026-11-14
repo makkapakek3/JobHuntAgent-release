@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="zh-CN"><meta charset="utf-8">
+<title>JobHuntAgent UIA DEMO</title>
+<style>
+body{font:18px system-ui;max-width:800px;margin:24px auto;padding:0 20px}
+label{display:block;margin:12px 0 5px}input:not([type=checkbox]),textarea{box-sizing:border-box;width:100%;padding:8px;font:inherit}
+button{font:inherit;padding:10px;margin:15px 15px 15px 0}p{white-space:pre-wrap}
+[role=group]{border:1px solid #ccd5df;padding:12px;margin:12px 0}
+</style>
+<h1>本地虚构 HR 聊天实验</h1>
+<p>所有目标和消息均为 DEMO。页面只保存本机模拟会话，不连接招聘平台。</p>
+<p id="load"></p>
+<div role="group" aria-label="HR DEMO target synthetic-company / synthetic-agent-role / synthetic-HR"><p>DEMO company / DEMO Agent role / DEMO local HR</p></div>
+<label for="recipient">DEMO recipient</label><input id="recipient" aria-label="DEMO recipient" value="DEMO local HR" readonly>
+<label for="message">DEMO message</label><textarea id="message" aria-label="DEMO message" maxlength="3000" rows="4" autocomplete="off"></textarea>
+<button type="button" id="validate">Validate DEMO message</button>
+<label><input type="checkbox" id="unlock" aria-label="Unlock DEMO message">Unlock DEMO message after synthetic test approval</label>
+<button type="button" id="send" disabled>Send DEMO message</button>
+<div role="group" aria-label="DEMO conversation"><p id="count">DEMO sent count 0</p><p id="body"></p><p id="receipt"></p></div>
+<div role="group" aria-label="DEMO HR feedback"><p id="feedback" role="status">DEMO message ready</p></div>
+<script>
+"use strict";
+const run = new URLSearchParams(location.search).get('run');
+if (!/^[a-f0-9]{32}$/.test(run || '')) throw new Error('DEMO run required');
+document.title = 'JobHuntAgent UIA DEMO ' + run;
+document.getElementById('load').textContent='DEMO page load '+Date.now()+'-'+Math.floor(Math.random()*1000000000);
+const message=document.getElementById('message'),send=document.getElementById('send'),unlock=document.getElementById('unlock'),feedback=document.getElementById('feedback');
+const storageKey='jobhunt-local-hr-demo-'+run;
+let attempted=false,approvedMessage=null;
+function valid(){return message.value.startsWith('DEMO ') && message.value.length<=3000;}
+function render(record){
+  message.value=record.message;message.readOnly=true;send.disabled=true;
+  document.getElementById('count').textContent='DEMO sent count 1';
+  document.getElementById('body').textContent=record.message;
+  document.getElementById('receipt').textContent=record.receipt;
+  feedback.textContent=record.receipt;
+}
+try{
+  const raw=localStorage.getItem(storageKey);
+  if(raw){
+    const record=JSON.parse(raw);
+    if(record.receipt!=='DEMO message receipt '+run+' 1' || typeof record.message!=='string' || !record.message.startsWith('DEMO ')) throw new Error('invalid local record');
+    attempted=true;render(record);
+  }
+}catch(_){attempted=true;feedback.textContent='DEMO storage error';send.disabled=true;}
+document.getElementById('validate').onclick=()=>{feedback.textContent=valid()?'DEMO message validation OK':'DEMO message validation failed';};
+unlock.onchange=()=>{
+  approvedMessage=unlock.checked?message.value:null;
+  message.readOnly=attempted || unlock.checked;
+  send.disabled=attempted || !unlock.checked || !valid();
+};
+send.onclick=()=>{
+  if(attempted || !unlock.checked || !valid() || !message.readOnly || message.value!==approvedMessage)return;
+  attempted=true;send.disabled=true;
+  const record={message:message.value,receipt:'DEMO message receipt '+run+' 1'};
+  try{localStorage.setItem(storageKey,JSON.stringify(record));render(record);}
+  catch(_){feedback.textContent='DEMO storage error';}
+};
+</script></html>

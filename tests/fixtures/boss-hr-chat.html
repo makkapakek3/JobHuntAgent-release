@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="zh-CN">
+<meta charset="utf-8">
+<title>本地模拟招聘会话</title>
+<h1>本地模拟招聘会话</h1>
+<p>用扩展选择模拟岗位，再开始监听。下面的消息和会话都是虚构的。</p>
+<button id="incoming">模拟 HR 问到岗时间</button>
+<button id="history">显示更早的聊天记录</button>
+<button id="switch">切换会话</button>
+<ul id="chat" data-demo-conversation="fixture-a">
+  <li data-message-id="old" data-sequence="2" data-direction="hr">你好，欢迎了解这个岗位。</li>
+  <li data-message-id="mine" data-sequence="3" data-direction="self">您好，我对岗位有兴趣。</li>
+</ul>
+<script>
+  const chat = document.getElementById('chat');
+  function addMessage(id, sequence, direction, text) {
+    const row = document.createElement('li');
+    Object.assign(row.dataset, {messageId: id, sequence, direction});
+    row.textContent = text;
+    chat.append(row);
+  }
+  document.getElementById('incoming').onclick = () => addMessage('new', 4, 'hr', '最快什么时候能到岗？');
+  document.getElementById('history').onclick = () => addMessage('older', 1, 'hr', '这是更早的消息。');
+  document.getElementById('switch').onclick = () => {
+    chat.dataset.demoConversation = 'fixture-b';
+    chat.replaceChildren();
+    addMessage('new', 1, 'hr', '另一条会话。');
+  };
+</script>
+</html>

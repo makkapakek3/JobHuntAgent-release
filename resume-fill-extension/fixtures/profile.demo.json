@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "contact": {"fullName": "示例同学", "phone": "00000000000", "email": "student@example.invalid", "currentCity": "示例城"},
+  "education": [{"id": "school-1", "school": "示例大学", "major": "电子工程", "degree": "本科", "startMonth": "2021-09", "endMonth": "2025-06"}],
+  "work": [],
+  "internships": [
+    {"id": "intern-1", "company": "示例甲公司", "title": "开发实习生", "startMonth": "2025-01", "endMonth": "2025-02", "description": "甲：独立完成开发样例。"},
+    {"id": "intern-2", "company": "示例乙公司", "title": "测试实习生", "startMonth": "2025-03", "endMonth": "2025-04", "description": "乙：编写测试与报告。"},
+    {"id": "intern-3", "company": "示例丙公司", "title": "运营实习生", "startMonth": "2025-05", "endMonth": "2025-06", "description": "丙：整理运营数据。"},
+    {"id": "intern-4", "company": "示例丁公司", "title": "研究实习生", "startMonth": "2025-07", "endMonth": "2025-08", "description": "丁：记录试验与分析。"}
+  ],
+  "projects": [{"id": "project-1", "name": "示例温室", "role": "开发者", "startMonth": "2025-09", "ongoing": true, "description": "项目：记录温室数据。"}]
+}

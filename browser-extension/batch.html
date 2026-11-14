@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>岗位导出进度</title>
+  <style>
+    body { max-width: 640px; margin: 48px auto; padding: 0 16px; font: 16px/1.6 system-ui, sans-serif; }
+    progress { width: 100%; }
+    button { padding: 6px 12px; font: inherit; }
+  </style>
+  <script src="collect.js" defer></script>
+  <script src="collect-51job.js" defer></script>
+  <script src="collect-liepin.js" defer></script>
+  <script src="batch-platforms.js" defer></script>
+  <script src="files.js" defer></script>
+  <script src="batch.js" defer></script>
+</head>
+<body>
+  <h1>岗位导出进度</h1>
+  <p>请保留岗位列表页和本页，等待合并保存。</p>
+  <progress id="progress" value="0" max="1" aria-label="岗位补读进度"></progress>
+  <p id="status" role="status">正在读取岗位列表…</p>
+  <button id="grant" type="button" hidden>授权读取详情页</button>
+  <button id="stop" type="button" disabled>停止并保存已读结果</button>
+  <p><a href="folder.html" target="_blank" rel="noopener">设置导出文件夹</a></p>
+</body>
+</html>

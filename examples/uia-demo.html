@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<title>JobHuntAgent UIA DEMO</title>
+<style>
+body {font: 18px system-ui; max-width: 720px; margin: 28px auto; padding: 0 20px; background: #f4f7fa; color: #182b3c}
+label {display:block; margin:14px 0 5px} input:not([type=checkbox]), textarea {width:95%; padding:9px; font:inherit}
+button {padding:10px 18px; margin:18px 12px 18px 0; font:inherit} output {display:block; padding:15px; background:#fff; border:1px solid #567}
+</style>
+<h1>JobHuntAgent UIA DEMO</h1>
+<p>Local synthetic application. No external network requests or real applications.</p>
+<form aria-label="DEMO application form">
+  <label for="demo-name">DEMO name</label><input id="demo-name" aria-label="DEMO name" required autocomplete="off">
+  <label for="demo-email">DEMO email</label><input id="demo-email" aria-label="DEMO email" type="email" required autocomplete="off">
+  <label for="demo-summary">DEMO summary</label><textarea id="demo-summary" aria-label="DEMO summary" required rows="3"></textarea>
+  <button type="button" id="validate">Validate DEMO</button>
+  <label><input id="unlock" type="checkbox" aria-label="Unlock DEMO submission"> Unlock DEMO submission after recorded human approval</label>
+  <button id="submit" type="submit" disabled>Submit DEMO</button>
+  <output role="status" id="feedback">DEMO ready</output>
+</form>
+<script>
+const run = new URLSearchParams(location.search).get('run');
+if (!/^[a-f0-9]{32}$/.test(run || '')) throw new Error('DEMO run required');
+document.title = 'JobHuntAgent UIA DEMO ' + run;
+const feedback = document.getElementById('feedback'), form = document.querySelector('form');
+let checks = 0, submitted = false;
+document.getElementById('validate').onclick = () => {
+  feedback.textContent = form.checkValidity() ? 'DEMO validation OK ' + (++checks) : 'DEMO validation FAILED';
+};
+document.getElementById('unlock').onchange = e => {document.getElementById('submit').disabled = !e.target.checked || submitted;};
+form.onsubmit = e => {
+  e.preventDefault();
+  if (!document.getElementById('unlock').checked || submitted || !form.checkValidity()) return;
+  submitted = true;
+  document.getElementById('submit').disabled = true;
+  feedback.textContent = 'DEMO receipt ' + run;
+};
+</script>
+</html>

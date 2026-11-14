@@ -1,0 +1,22 @@
+# 复制为 basic_profile.yaml 后再填写真实信息；这个示例不包含真人资料。
+schema_version: 1
+contact:
+  full_name: ""                 # 按真实证件/简历填写；网站请求时按权限使用
+  email: ""
+  phone: ""
+  current_city: ""
+education:
+  - university: ""
+    degree: ""                 # 例如：硕士
+    major: ""
+    start_date: ""             # YYYY-MM
+    graduation_date: ""        # YYYY-MM，预计毕业也需要注明
+    graduation_expected: true
+    study_mode: ""             # 全日制/非全日制；不确定则留空
+skills: []                       # 如 Python、LangGraph 等；仅填写能解释并举证的技能
+projects: []                     # name, dates, role, responsibilities, stack, outcomes
+internships: []                  # company, title, dates, achievements
+publications: []                 # title, status, url；投稿中不可写为已发表
+awards_and_certificates: []
+portfolio_links: []              # GitHub、论文或作品集的公开链接
+notes_needing_verification: []

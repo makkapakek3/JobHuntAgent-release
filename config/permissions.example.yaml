@@ -1,0 +1,20 @@
+schema_version: 1
+# 复制为 permissions.yaml；以下是安全默认值
+read_profile: true
+read_job_sources: true
+prepare_manual_packages: true
+generate_hr_drafts: true
+send_hr_messages: false
+auto_send_factual_answers: false
+submit_applications: false
+upload_resume_without_per_job_approval: false
+read_sensitive_private_documents: false
+upload_sensitive_documents: false
+accept_interview_invites: false
+modify_account_credentials: false
+make_payment: false
+allowed_job_sources: []
+allowed_messaging_channels: []
+require_per_job_approval: true
+require_review_for_salary_location_hours_interviews: true
+audit_actions: true

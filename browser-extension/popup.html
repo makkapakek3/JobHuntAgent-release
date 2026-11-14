@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>JobHuntAgent 岗位读取</title>
+  <style>
+    body { width: 320px; margin: 16px; font: 14px/1.5 system-ui, sans-serif; color: #202124; }
+    h1 { font-size: 17px; margin: 0 0 12px; }
+    button { padding: 6px 10px; font: inherit; margin-right: 8px; }
+    p { overflow-wrap: anywhere; }
+    #hr-panel { border-top: 1px solid #ddd; margin-top: 12px; padding-top: 10px; }
+    #hr-panel h2 { font-size: 16px; }
+    #hr-panel label { display: block; margin: 8px 0; }
+    #hr-panel textarea, #hr-panel select { box-sizing: border-box; width: 100%; font: inherit; }
+    #hr-port { width: 75px; }
+    #hr-panel button { margin: 2px 3px 2px 0; }
+  </style>
+  <script src="collect.js" defer></script>
+  <script src="collect-51job.js" defer></script>
+  <script src="collect-liepin.js" defer></script>
+  <script src="batch-platforms.js" defer></script>
+  <script src="files.js" defer></script>
+  <script src="popup.js" defer></script>
+  <script src="hr-ui.js" defer></script>
+</head>
+<body>
+  <h1 id="platform">岗位导出</h1>
+  <button id="batch" type="button" hidden>批量补读并导出</button>
+  <button id="export" type="button">导出当前页</button>
+  <p><a href="folder.html" target="_blank" rel="noopener">设置导出文件夹</a></p>
+  <p id="status" role="status">打开搜索结果或职位详情后，可导出当前页。</p>
+  <section id="hr-panel">
+    <h2>HR 回复助手</h2>
+    <details id="hr-settings">
+      <summary>连接本机 Agent</summary>
+      <label>端口 <input id="hr-port" type="number" min="1024" max="65535" value="56876"></label>
+      <label>配对码 <input id="hr-token" type="password" autocomplete="off"></label>
+      <button id="hr-pair" type="button">连接</button>
+    </details>
+    <label>对应岗位 <select id="hr-job"><option value="">请先连接本机 Agent</option></select></label>
+    <div id="hr-demo-controls" hidden>
+      <button id="hr-start" type="button">监听模拟会话</button>
+      <button id="hr-stop" type="button">停止监听</button>
+    </div>
+    <label>手动粘贴 HR 消息 <textarea id="hr-manual" rows="2" maxlength="1500"></textarea></label>
+    <button id="hr-submit" type="button">生成草稿</button>
+    <button id="hr-refresh" type="button">刷新结果</button>
+    <button id="hr-retry" type="button" hidden>重试生成</button>
+    <p id="hr-status" role="status">请连接本机 Agent。</p>
+    <p id="hr-original"></p>
+    <label>回复草稿 <textarea id="hr-draft" rows="3"></textarea></label>
+    <button id="hr-copy" type="button">复制草稿</button>
+  </section>
+</body>
+</html>

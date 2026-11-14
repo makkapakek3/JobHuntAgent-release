@@ -1,0 +1,3 @@
+external_id,company,title,city,jd,url,required_skills,is_demo
+demo-python,DEMO company,DEMO Python engineer,Shanghai,DEMO Python SQLite backend,https://example.invalid/jobs/python,Python;SQLite,true
+demo-java,DEMO company,DEMO Java engineer,Beijing,DEMO Java backend,https://example.invalid/jobs/java,Java,true

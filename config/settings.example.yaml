@@ -1,0 +1,18 @@
+# 复制为 settings.yaml；真实运行使用 DeepSeek，--demo 默认 mock。
+max_new_jobs_for_llm: 20
+max_jobs_per_source: 100
+approval_hours: 72
+matching_backend: deepseek
+deepseek_model: deepseek-flash
+daily_token_budget: 100000
+llm_max_output_tokens: 1200
+llm_max_input_bytes: 48000
+llm_timeout_seconds: 30
+llm_max_retries: 1
+llm_tool_rounds: 2
+schedule_timezone: Asia/Shanghai
+nightly_time: '01:00'
+# 每百万 Token 价格；自行核对币种及最新价格。留空只统计 Token，不伪造费用。
+# model_prices:
+#   deepseek-flash: {input: <单价>, cached_input: <缓存输入单价>, output: <单价>}
+model_prices: {}

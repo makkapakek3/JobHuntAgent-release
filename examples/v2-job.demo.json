@@ -1,0 +1,11 @@
+{
+  "source": "demo-local",
+  "external_id": "p0-recovery-demo",
+  "company": "DEMO 虚构公司",
+  "title": "DEMO Python 工程师",
+  "city": "上海",
+  "jd": "DEMO 虚构岗位，仅验证本地任务恢复：Python、SQLite。",
+  "url": "https://example.invalid/jobs/p0-recovery-demo",
+  "required_skills": ["Python", "SQLite"],
+  "is_demo": true
+}

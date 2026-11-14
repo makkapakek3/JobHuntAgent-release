@@ -1,0 +1,12 @@
+{
+  "manifest_version": 3,
+  "name": "JobHuntAgent 岗位读取",
+  "version": "0.9.0",
+  "description": "将 BOSS 直聘、前程无忧和猎聘的岗位导出为 JSON。",
+  "permissions": ["activeTab", "scripting", "storage"],
+  "host_permissions": ["http://127.0.0.1/*"],
+  "background": { "service_worker": "hr-bridge.js" },
+  "optional_host_permissions": ["https://www.zhipin.com/*", "https://zhipin.com/*", "https://www.liepin.com/*", "https://we.51job.com/*", "https://jobs.51job.com/*"],
+  "options_ui": { "page": "folder.html", "open_in_tab": true },
+  "action": { "default_popup": "popup.html" }
+}

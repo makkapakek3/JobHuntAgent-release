@@ -1,0 +1,29 @@
+<!doctype html><html lang="zh-CN"><meta charset="utf-8"><title>示例飞书招聘简历</title>
+<div class="resumeEditForm-wrapper"><div class="resumeEditForm-headerText">编辑简历</div>
+<form class="atsx-form">
+  <section class="resumeEditForm-basicInfoSection createFormSection__123abc">
+    <div class="createFormSection-left"><div class="createFormSection-title"><span class="createFormSection-text">基本信息</span></div><div class="createFormSection-desc">请核对基本资料</div></div>
+    <div class="createFormSection-right">
+      <div class="atsx-form-item"><div class="atsx-form-item-label"><label><span class="customResumeForm-fieldName">姓名</span><span>请填写真实姓名</span></label></div><div class="atsx-form-item-children"><div><span><input id="person" value="页面已有姓名"></span></div></div></div>
+      <div class="atsx-form-item"><div class="atsx-form-item-label"><label>邮箱</label></div><div class="atsx-form-item-children"><div><span><input id="mail"></span></div></div></div>
+      <div class="atsx-form-item"><div class="atsx-form-item-label"><label>所在地</label></div><div class="atsx-form-item-children" role="combobox"><input type="search"></div></div>
+    </div>
+  </section>
+  <div class="applyFormModuleWrapper__abc123">
+    <div class="applyFormModuleWrapper-left"><div class="applyFormModuleWrapper-title"><span class="applyFormModuleWrapper-text__abc123">实习经历</span></div><div>请从最近一段开始</div></div>
+    <div class="applyFormModuleWrapper-right" id="rows"></div>
+  </div>
+  <button type="submit">保存</button>
+</form></div>
+<script>
+  const field = (label, node) => `<div class="ud-formily-item"><div class="ud-formily-item-label"><div class="ud-formily-item-label-content">${label}</div></div><div class="ud-formily-item-control-content-component"><div><span>${node}</span></div></div></div>`;
+  for (let i = 0; i < 4; i++) {
+    const row = document.createElement('div');
+    row.className = 'resumeEditForm-item';
+    row.innerHTML = field('实习单位', `<input id="co${i}">`) + field('职位', `<input id="title${i}">`) + field('实习描述', `<textarea id="desc${i}"></textarea>`);
+    document.querySelector('#rows').append(row);
+  }
+  document.querySelector('#co0').value = '示例甲公司';
+  window.submits = 0;
+  document.querySelector('form').addEventListener('submit', e => { window.submits++; e.preventDefault(); });
+</script></html>

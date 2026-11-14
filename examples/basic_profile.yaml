@@ -1,0 +1,10 @@
+# 完全虚构，仅用于离线验收，不能当作用户真实资料。
+education:
+  - degree: 硕士
+    major: 电子信息（DEMO）
+    graduation_date: '2027-06'
+skills: [Python, LangGraph, SQLite]
+projects:
+  - name: DEMO 本地任务助手
+    description: 虚构样例，练习本地工作流和持久化。
+    stack: [Python, LangGraph, SQLite]

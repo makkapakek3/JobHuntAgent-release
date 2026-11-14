@@ -1,0 +1,14 @@
+job_titles: [Python, Agent, 大模型, AI]
+locations:
+  preferred: [上海, 杭州]
+  acceptable: [远程]
+  excluded: []
+compensation:
+  minimum_monthly_cny: 12000
+  maximum_monthly_cny: 40000
+job_type: campus_recruiting
+expected_graduation_year: 2027
+max_experience_years: 1
+company_blacklist: [黑名单示例公司]
+keywords_exclude: [长期出差]
+min_match_score_for_review: 75

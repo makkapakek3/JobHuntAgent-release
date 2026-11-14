@@ -1,0 +1,23 @@
+<!doctype html><html lang="zh-CN"><meta charset="utf-8"><title>演示：陌生候选人表单</title>
+<main><h1>候选人申请</h1>
+  <div role="group" aria-labelledby="about"><h2 id="about">候选人信息</h2>
+    <input id="candidate" aria-label="真实姓名" autocomplete="name">
+    <input id="mail" aria-label="联系邮箱" type="email">
+    <label for="locality">目前所在地区</label><input id="locality">
+  </div>
+  <article><h2>学习经历</h2><input id="training" aria-label="毕业院校"><input id="discipline" aria-label="学科方向"><input aria-label="毕业月份" type="month"></article>
+  <div id="experience"></div>
+</main>
+<script>
+  for (let i = 0; i < 4; i++) {
+    const block = document.createElement('div');
+    block.setAttribute('role', 'group');
+    block.setAttribute('aria-labelledby', `experience-${i}`);
+    block.innerHTML = `<h3 id="experience-${i}">实习经验第 ${i + 1} 段</h3>
+      <label for="org-${i}">实习单位</label><input id="org-${i}">
+      <label for="position-${i}">岗位名称</label><input id="position-${i}">
+      <label for="began-${i}">起始年月</label><input id="began-${i}" type="month">
+      <label for="note-${i}">经历描述</label><textarea id="note-${i}"></textarea>`;
+    document.querySelector('#experience').append(block);
+  }
+</script></html>

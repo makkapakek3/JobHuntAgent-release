@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="zh-CN">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>通用简历填写</title><link rel="stylesheet" href="ui.css">
+<main class="popup">
+  <header><h1>通用简历填写</h1><button id="options" class="secondary" type="button">资料卡设置</button></header>
+  <p>在网页上先新增并展开每段经历，再回来识别。</p>
+  <div class="actions">
+    <button id="scan" type="button">识别并预览</button>
+    <button id="fill" type="button" disabled>填写选中的空白项</button>
+  </div>
+  <p id="status" role="status">尚未识别当前页面。</p>
+  <p id="notice" role="status"></p>
+  <div id="diagnostic" hidden>
+    <button id="diagnose" class="secondary" type="button">复制排查信息</button>
+    <textarea id="diagnostic-text" aria-label="排查信息" readonly rows="8" hidden></textarea>
+  </div>
+  <div id="results" aria-live="polite"></div>
+  <div id="preview"></div>
+</main>
+<script src="profile.js"></script><script src="plan.js"></script><script src="popup.js"></script>
+</html>

@@ -1,0 +1,11 @@
+{
+  "source": "demo-local",
+  "external_id": "p3-local-application",
+  "company": "DEMO local company",
+  "title": "DEMO Python engineer",
+  "city": "上海",
+  "jd": "DEMO 虚构岗位，仅验证本地申请闭环：Python、LangGraph、SQLite。",
+  "url": "https://example.invalid/jobs/p3-local-application",
+  "required_skills": ["Python", "LangGraph", "SQLite"],
+  "is_demo": true
+}

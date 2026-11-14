@@ -1,0 +1,2 @@
+external_id,company,title,city,jd,url,required_skills,minimum_degree,salary_min,salary_max,salary_currency,salary_period,campus,graduation_year,experience_years,is_demo
+example-import-1,DEMO CSV公司,Python Agent工程师,上海,Python LangGraph SQLite 示例岗位,https://example.invalid/import/1,Python;LangGraph,本科,15000,25000,CNY,month,true,2027,0,true

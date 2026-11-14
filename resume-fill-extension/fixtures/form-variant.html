@@ -1,0 +1,16 @@
+<!doctype html><html><meta charset="utf-8"><title>Candidate application</title>
+<h1>Candidate application</h1>
+<section aria-label="Personal information"><label for="person">Full name</label><input id="person"></section>
+<article><h2>Education</h2><input aria-label="University" id="school"><input aria-label="Major" id="major"></article>
+<section aria-label="Internships"><div id="rows"></div></section>
+<details><summary>项目经历</summary><label>项目名称<input id="folded"></label><label>项目描述<textarea></textarea></label></details>
+<script>
+  for (let i = 0; i < 4; i++) {
+    const row = document.createElement('div');
+    row.innerHTML = `<div><span id="company-label-${i}">Employer</span><input aria-labelledby="company-label-${i}" id="co${i}"></div>
+      <div><label>Job title<input id="title${i}"></label></div>
+      <div><label>Start month<input id="start${i}" type="month"></label></div>
+      <div><label>Responsibilities<textarea id="desc${i}"></textarea></label></div>`;
+    document.querySelector('#rows').append(row);
+  }
+</script></html>

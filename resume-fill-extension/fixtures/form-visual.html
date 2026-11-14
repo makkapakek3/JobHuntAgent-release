@@ -1,0 +1,39 @@
+<!doctype html><html lang="zh-CN"><meta charset="utf-8"><title>示例校园招聘</title>
+<style>section { display: grid; grid-template-columns: 14rem 32rem; margin: 1rem; } .field { margin-bottom: .5rem; }</style>
+<main>
+  <div class="page-title">编辑简历</div>
+  <section>
+    <div class="section-header"><div><span>基本信息</span></div></div>
+    <div class="section-fields">
+      <div class="field"><div class="caption"><span>姓名</span><span>*</span></div><div class="control"><input id="name" value="页面已有姓名"></div></div>
+      <div class="field"><div class="caption">手机号码</div><div>页面已有号码</div></div>
+      <div class="field"><div class="caption"><span>邮箱</span><span>*</span></div><div class="control"><input id="email" value="existing@example.invalid"></div></div>
+      <div class="field"><div class="caption"><span>现居城市</span></div><div class="control"><input id="city"></div></div>
+    </div>
+  </section>
+  <section>
+    <div class="section-header"><span>实习经历</span><button type="button">添加</button></div>
+    <div id="internships"></div>
+  </section>
+  <section>
+    <div class="section-header"><span>紧急联系人</span></div>
+    <div><div><span>姓名</span><input id="emergency"></div></div>
+  </section>
+</main>
+<iframe title="帮助组件" srcdoc="帮助内容"></iframe>
+<script>
+  const rows = document.getElementById('internships');
+  for (let i = 0; i < 4; i++) {
+    const row = document.createElement('div');
+    row.innerHTML = `<div class="field"><div><span>公司名称</span><span>*</span></div><div><input id="company-${i}"></div></div>
+      <div class="field"><div><span>职位</span><span>*</span></div><div><input id="title-${i}"></div></div>
+      <div class="field"><div><span>实习描述</span></div><div><textarea id="description-${i}"></textarea></div></div>`;
+    rows.append(row);
+  }
+  document.getElementById('company-0').value = '示例甲公司';
+  document.getElementById('title-0').value = '开发实习生';
+  if (new URLSearchParams(location.search).has('no-editor')) {
+    const main = document.querySelector('main');
+    main.innerHTML = '<div><label for="private-id">姓名</label><input id="private-id" name="private-name" placeholder="private-placeholder" value="private-value"></div>';
+  }
+</script></html>
